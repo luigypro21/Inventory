@@ -1,0 +1,31 @@
+﻿
+<div>
+    <input type="text" @bind-value="@nombre" />
+    <input type="number" @bind-value="@edad" />
+</div>
+
+<input type="button" class="btn btn-primary" value="Haga clic aqui" @onclick="ChangeText" />
+<div>
+    @message
+</div>
+
+
+@code{
+    [Parameter]
+    public string Message { get; set; }
+
+    string message;
+    string nombre;
+    int edad;
+
+    protected override async Task OnInitializedAsync()
+    {
+        message = Message;
+    }
+
+    private void ChangeText()
+    {
+        message = $"Hola {nombre} , su edad es {edad}";
+    }
+
+}
